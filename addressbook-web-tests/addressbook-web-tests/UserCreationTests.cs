@@ -43,7 +43,7 @@ namespace WebAddressbookTests
         public void UserCreationTest()
         {
             OpenHomePage();
-            Login(new LogPassData ("admin", "secret"));
+            Login(new AccountData ("admin", "secret"));
             GoToAddUser();
             UserData user = new UserData("Bob");
             user.Lastname = "Petrov";
@@ -78,15 +78,15 @@ namespace WebAddressbookTests
             driver.FindElement(By.LinkText("add new")).Click();
         }
 
-        private void Login(LogPassData logPass)
+        private void Login(AccountData account)
         {
             
             driver.FindElement(By.Name("user")).Click();
             driver.FindElement(By.Name("user")).Clear();
-            driver.FindElement(By.Name("user")).SendKeys(logPass.Username);
+            driver.FindElement(By.Name("user")).SendKeys(account.Username);
             driver.FindElement(By.Name("pass")).Click();
             driver.FindElement(By.Name("pass")).Clear();
-            driver.FindElement(By.Name("pass")).SendKeys(logPass.Password);
+            driver.FindElement(By.Name("pass")).SendKeys(account.Password);
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
         }
 
